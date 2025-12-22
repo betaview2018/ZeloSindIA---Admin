@@ -14,7 +14,7 @@ export interface Condo {
   name: string;
   status: 'active' | 'maintenance' | 'setup';
   residents: number;
-  biaStatus: 'online' | 'offline' | 'paused';
+  zeloStatus: 'online' | 'offline' | 'paused';
   color: string;
 }
 

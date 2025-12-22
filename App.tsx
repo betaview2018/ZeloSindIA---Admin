@@ -8,8 +8,9 @@ import { Integrations } from './pages/Integrations';
 import { Documents } from './pages/Documents';
 import { CreateCondo } from './pages/CreateCondo';
 import { ViewState } from './types';
+import { ThemeProvider } from './context/ThemeContext';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('dashboard');
 
   const renderView = () => {
@@ -37,6 +38,14 @@ const App: React.FC = () => {
     <Layout currentView={currentView} onNavigate={setCurrentView}>
       {renderView()}
     </Layout>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 };
 

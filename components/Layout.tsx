@@ -17,21 +17,21 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onNavigat
       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
         currentView === view
           ? 'bg-primary/10 text-primary border border-primary/20'
-          : 'text-slate-400 hover:bg-white/5 hover:text-white'
+          : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white'
       }`}
     >
-      <Icon size={20} className={currentView === view ? 'text-primary' : 'text-slate-400 group-hover:text-white'} />
+      <Icon size={20} className={currentView === view ? 'text-primary' : 'text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'} />
       <span className="font-medium text-sm">{label}</span>
     </button>
   );
 
   return (
-    <div className="flex h-screen bg-[#0f172a] overflow-hidden text-slate-100">
+    <div className="flex h-screen bg-slate-50 dark:bg-[#0f172a] overflow-hidden text-slate-900 dark:text-slate-100 transition-colors duration-300">
       {/* Sidebar */}
       <aside
         className={`${
           isSidebarOpen ? 'w-72' : 'w-0'
-        } flex-shrink-0 bg-[#101a23] border-r border-slate-800 transition-all duration-300 flex flex-col`}
+        } flex-shrink-0 bg-white dark:bg-[#101a23] border-r border-slate-200 dark:border-slate-800 transition-all duration-300 flex flex-col`}
       >
         <div className="p-6">
           <div className="flex items-center gap-3 mb-8">
@@ -39,7 +39,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onNavigat
               <Icons.Bot className="text-white" size={24} />
             </div>
             <div>
-              <h1 className="font-bold text-lg leading-tight">Admin v2.0</h1>
+              <h1 className="font-bold text-lg leading-tight text-slate-900 dark:text-white">Admin v2.0</h1>
               <p className="text-xs text-slate-500">Condomínio Manager</p>
             </div>
           </div>
@@ -49,21 +49,21 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onNavigat
             <NavItem view="residents" icon={Icons.Users} label="Moradores" />
             <NavItem view="create-condo" icon={Icons.Building} label="Condomínios" />
             <NavItem view="documents" icon={Icons.Upload} label="Documentos" />
-            <NavItem view="chat" icon={Icons.Chat} label="BIA Chat" />
+            <NavItem view="chat" icon={Icons.Chat} label="Zelo Chat" />
             <NavItem view="integrations" icon={Icons.Zap} label="Integrações" />
             <NavItem view="settings" icon={Icons.Settings} label="Configurações" />
           </nav>
         </div>
 
-        <div className="mt-auto p-6 border-t border-slate-800">
-           <div className="flex items-center gap-3 mb-4 p-3 rounded-lg bg-slate-800/50">
-               <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white">AD</div>
+        <div className="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
+           <div className="flex items-center gap-3 mb-4 p-3 rounded-lg bg-slate-100 dark:bg-slate-800/50">
+               <div className="w-8 h-8 rounded-full bg-slate-300 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-white">AD</div>
                <div className="overflow-hidden">
-                   <p className="text-sm font-medium truncate">Admin User</p>
-                   <p className="text-xs text-slate-500 truncate">admin@bia.ai</p>
+                   <p className="text-sm font-medium truncate text-slate-900 dark:text-slate-200">Admin User</p>
+                   <p className="text-xs text-slate-500 truncate">admin@zelo.ai</p>
                </div>
            </div>
-          <button className="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-red-400 transition-colors w-full">
+          <button className="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors w-full">
             <Icons.Logout size={20} />
             <span className="text-sm font-medium">Sair</span>
           </button>
@@ -73,18 +73,18 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onNavigat
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0 overflow-hidden relative">
         {/* Header */}
-        <header className="h-16 border-b border-slate-800 bg-[#101a23]/80 backdrop-blur-sm flex items-center justify-between px-6 sticky top-0 z-30">
+        <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-[#101a23]/80 backdrop-blur-sm flex items-center justify-between px-6 sticky top-0 z-30 transition-colors duration-300">
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800"
+              className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
             >
               <Icons.Menu size={20} />
             </button>
-            <div className="hidden md:flex items-center gap-2 text-sm text-slate-400">
+            <div className="hidden md:flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
               <span>Admin</span>
               <span>/</span>
-              <span className="text-white capitalize">{currentView.replace('-', ' ')}</span>
+              <span className="text-slate-900 dark:text-white capitalize">{currentView.replace('-', ' ')}</span>
             </div>
           </div>
 
@@ -94,17 +94,17 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onNavigat
               <input
                 type="text"
                 placeholder="Buscar..."
-                className="bg-slate-900 border border-slate-700 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-primary w-64"
+                className="bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-900 dark:text-slate-200 focus:outline-none focus:border-primary w-64 transition-colors"
               />
             </div>
-            <button className="p-2 text-slate-400 hover:text-white relative">
+            <button className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white relative">
               <Icons.Bell size={20} />
-              <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-[#101a23]"></span>
+              <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-[#101a23]"></span>
             </button>
           </div>
         </header>
 
-        <div className="flex-1 overflow-auto bg-[#0f172a]">
+        <div className="flex-1 overflow-auto bg-slate-50 dark:bg-[#0f172a] transition-colors duration-300">
            {children}
         </div>
       </main>
