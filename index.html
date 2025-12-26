@@ -4,28 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin v2.0</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind will be built via PostCSS in production (no CDN) -->
     <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              background: '#0f172a', // Dark slate
-              surface: '#1e293b',    // Lighter slate
-              primary: '#3b82f6',    // Blue-500
-              secondary: '#64748b',
-              accent: '#f43f5e',     // Rose-500 (for chat/alerts)
-            },
-            fontFamily: {
-              sans: ['Spline Sans', 'sans-serif'],
-              mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
-            }
-          }
-        }
-      }
-    </script>
     <style>
       body {
         background-color: #0f172a;
@@ -61,5 +41,7 @@
 </head>
   <body>
     <div id="root"></div>
+    <!-- Vite entry: mount the React app -->
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
